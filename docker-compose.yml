@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+
+ # User: postgres
+ # Password: senha 
+  db:
+    image: postgres:12.3-alpine
+    restart: always
+    user: ${CURRENT_UID}
+    environment:
+      TZ: America/Recife
+      POSTGRES_PASSWORD: 'senha'
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
