@@ -1,0 +1,9 @@
+#!/bin/bash
+SERVICE_NAME="odoo"
+export CURRENT_UID=$(id -u):$(id -g)
+
+alias dc="docker-compose"
+alias build="dc build"
+alias down="dc down"
+alias up="down && dc up"
+alias dr="dc run \$SERVICE_NAME"
