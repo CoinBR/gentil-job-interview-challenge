@@ -1,18 +1,33 @@
 version: "3.7"
 services:
 
- # User: postgres
- # Password: senha 
+  odoo:
+    image: odoo:13.0
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    volumes:
+      - ./odoo/web:/var/lib/odoo
+      - ./odoo/config:/etc/odoo
+      - ./odoo/addons:/mnt/extra-addons
+
   db:
-    image: postgres:12.3-alpine
+    image: postgres:10.14-alpine
     restart: always
     user: ${CURRENT_UID}
+    volumes:
+      - ./db:/var/lib/postgresql/data
     environment:
       TZ: America/Recife
-      POSTGRES_PASSWORD: 'senha'
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: odoo
+      POSTGRES_USER: odoo
 
   adminer:
     image: adminer
     restart: always
+    depends_on: 
+      - db
     ports:
       - 8080:8080
