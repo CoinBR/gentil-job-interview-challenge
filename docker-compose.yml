@@ -15,7 +15,6 @@ services:
   db:
     image: postgres:10.14-alpine
     restart: always
-    user: ${CURRENT_UID}
     volumes:
       - ./db:/var/lib/postgresql/data
     environment:
