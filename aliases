@@ -1,9 +1,13 @@
 #!/bin/bash
 SERVICE_NAME="odoo"
 export CURRENT_UID=$(id -u):$(id -g)
+export addons="/mnt/extra-addons/" 
 
 alias dc="docker-compose"
 alias build="dc build"
 alias down="dc down"
 alias up="down && dc up"
 alias dr="dc run \$SERVICE_NAME"
+
+alias odoo-bin="dr /usr/bin/odoo"
+alias scaffold="odoo-bin scaffold"
