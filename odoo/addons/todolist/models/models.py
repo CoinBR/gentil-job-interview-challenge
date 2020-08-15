@@ -3,14 +3,14 @@
 from odoo import models, fields, api
 
 
-# class todolist(models.Model):
-#     _name = 'todolist.todolist'
-#     _description = 'todolist.todolist'
+class todolist(models.Model):
+    _name = 'todolist.todolist'
+    _description = 'To-do list'
 
-#     name = fields.Char()
+    name = fields.Char()
+    description = fields.Text()
 #     value = fields.Integer()
 #     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
 #
 #     @api.depends('value')
 #     def _value_pc(self):
