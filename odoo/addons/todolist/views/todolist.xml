@@ -7,7 +7,7 @@
             that is an action opening a view or a set of views
         -->
         <record model="ir.actions.act_window" id="todolist_list_action">
-            <field name="name">Courses</field>
+            <field name="name">TodolisTodolist</field>
             <field name="res_model">todolist.todolist</field>
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
@@ -26,7 +26,7 @@
              its parent openacademy_menu and *after* its
              action course_list_action -->
         <menuitem id="tasks_todolists_menu" name="Tasks" parent="todolist_menu"
-                  action="course_list_action"/>
+                  action="todolist_list_action"/>
         <!-- Full id location:
              action="openacademy.course_list_action"
              It is not required when it is the same module -->
