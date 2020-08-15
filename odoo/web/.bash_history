@@ -6,3 +6,8 @@ ls
 ls 
 ls | grep odoo
 exit
+ls
+cd /mnt/extra-addons/
+ls
+cd todolist/
+exit
