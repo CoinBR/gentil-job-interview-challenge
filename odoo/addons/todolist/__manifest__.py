@@ -32,5 +32,5 @@
     'demo': [
         'demo/demo.xml',
     ],
-    'aplication': True,
+    'application': True,
 }
