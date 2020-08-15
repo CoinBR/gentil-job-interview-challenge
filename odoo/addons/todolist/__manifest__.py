@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "todolist",
+    'name': "To-do List",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
-
-    'description': """
-        Long description of module's purpose
+        A to-do list. Part of the challenge to get a job at Gentil.
     """,
 
-    'author': "My Company",
+    'description': """
+        A to-do list. Part of the challenge to get a job at Gentil.
+    """,
+
+    'author': "Pedro \"Coin\" Duarte",
     'website': "http://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing
