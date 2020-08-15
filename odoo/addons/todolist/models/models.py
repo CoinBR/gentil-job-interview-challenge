@@ -11,5 +11,4 @@ class task(models.Model):
     title = fields.Char(size=50)
     description = fields.Text()
     done = fields.Boolean(default=False)
-    created = fields.create_date()
     due = fields.Datetime()
