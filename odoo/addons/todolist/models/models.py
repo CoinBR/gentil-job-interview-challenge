@@ -12,3 +12,8 @@ class todolist(models.Model):
     description = fields.Text()
     status = fields.Selection([('created', 'Created'), ('working', 'Working'), ('done', 'Done'), ('problem', 'Problem')])
     due = fields.Datetime()
+
+class ParentedPartner(models.Model):
+    _inherit = 'res.partner'
+    
+    mother_name = fields.Char('Mother\'s full name')
