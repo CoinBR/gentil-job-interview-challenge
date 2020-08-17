@@ -2,17 +2,13 @@
 
 from odoo import models, fields, api
 
-
 class todolist(models.Model):
     _name = 'todolist.todolist'
-    _description = 'To-do list'
+    _description = 'Task List'
+    _rec_name = 'title'
+    _order = 'title'
 
-    name = fields.Char()
+    title = fields.Char(size=50)
     description = fields.Text()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         for record in self:
-#             record.value2 = float(record.value) / 100
+    done = fields.Boolean(default=False)
+    due = fields.Datetime()
