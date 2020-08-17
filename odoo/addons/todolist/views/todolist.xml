@@ -65,6 +65,22 @@
                 </graph>
             </field>
         </record>
+
+
+        <record id="parented_res_partner" model="ir.ui.view">
+            <field name="name">Partner Extended View</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <data>
+                   <field name="phone" position="before">
+                        <field name="mother_name"/>
+                    </field>
+                </data>                
+            </field>
+        </record>
+
+
         <!-- window action -->
         <!--
             The following tag is an action definition for a "window action",
@@ -80,6 +96,16 @@
             </field>
         </record>
 
+        <record model="ir.actions.act_window" id="todolist_list_partners_action">
+            <field name="name">Partners</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create the first partner 
+                </p>
+            </field>
+        </record>
+
         <!-- top level menu: no parent -->
         <menuitem id="main_todolist_menu" name="Todo List"/>
         <!-- A first level in the left side menu is needed
@@ -91,6 +117,9 @@
              action course_list_action -->
         <menuitem id="tasks_todolists_menu" name="Tasks" parent="todolist_menu"
                   action="todolist_list_action"/>
+
+        <menuitem id="tasks_partners_menu" name="Partners" parent="todolist_menu"
+                  action="todolist_list_partners_action"/>
         <!-- Full id location:
              action="openacademy.course_list_action"
              It is not required when it is the same module -->
