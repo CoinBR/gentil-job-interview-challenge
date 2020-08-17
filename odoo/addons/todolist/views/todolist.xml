@@ -43,6 +43,28 @@
                 </kanban>
             </field>
         </record>
+
+
+        <record model="ir.ui.view" id="view_todolist_calendar">
+            <field name="name">todolist.view.calendar</field>
+            <field name="model">todolist.todolist</field>
+            <field name="arch" type="xml">
+                <calendar string="Tasks" date_start="create_date" date_stop="due">
+                    <field name="title"></field>
+                </calendar> 
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_todolist_graph">
+            <field name="name">todolist.view.graph</field>
+            <field name="model">todolist.todolist</field>
+            <field name="arch" type="xml">
+                <graph string="Projects by Status" type="pie">
+                    <field name="status"/>
+                    <field name="status" type="row"/>
+                </graph>
+            </field>
+        </record>
         <!-- window action -->
         <!--
             The following tag is an action definition for a "window action",
@@ -51,7 +73,7 @@
         <record model="ir.actions.act_window" id="todolist_list_action">
             <field name="name">TodolisTodolist</field>
             <field name="res_model">todolist.todolist</field>
-            <field name="view_mode">tree,form,search,kanban</field>
+            <field name="view_mode">tree,form,search,kanban,calendar,graph</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">Create the first task
                 </p>
