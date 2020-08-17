@@ -10,5 +10,5 @@ class todolist(models.Model):
 
     title = fields.Char(size=50)
     description = fields.Text()
-    done = fields.Boolean(default=False)
+    status = fields.Selection([('created', 'Created'), ('working', 'Working'), ('done', 'Done'), ('problem', 'Problem')])
     due = fields.Datetime()

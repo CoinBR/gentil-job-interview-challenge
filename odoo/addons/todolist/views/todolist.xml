@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+        <record model="ir.ui.view" id="view_todolist_kanban">
+            <field name="name">todolist.view.kanban</field>
+            <field name="model">todolist.todolist</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="status"
+                        default_order="due"
+                        group_create="false"
+                        group_delete="false"
+                        group_edit="false"
+                        quick_create="true"
+                        records_draggable="true" 
+                >
 
+
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div
+                                    t-attf-class="oe_kanban_global_click_edit oe_semantic_html_override
+                                                  oe_kanban_card {{record.group_fancy==1 ? 'oe_kanban_card_fancy' : ''}}">
+                                <div class="oe_dropdown_kanban">
+                                    <!-- dropdown menu -->
+                                    <div class="oe_dropdown_toggle">
+                                        <i class="fa fa-bars fa-lg" title="Manage" aria-label="Manage"/>
+                                        <ul class="oe_dropdown_menu">
+                                            <li>
+                                                <a type="delete">Delete</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="oe_clear"></div>
+                                </div>
+                                <div t-attf-class="oe_kanban_content">
+                                    <!-- title -->
+                                    Session name:
+                                    <field name="title"/>
+                                    <br/>
+                                    Due:
+                                    <field name="status"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+
+
+                </kanban>
+            </field>
+        </record>
         <!-- window action -->
         <!--
             The following tag is an action definition for a "window action",
@@ -9,7 +55,7 @@
         <record model="ir.actions.act_window" id="todolist_list_action">
             <field name="name">TodolisTodolist</field>
             <field name="res_model">todolist.todolist</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,search,kanban</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">Create the first task
                 </p>
