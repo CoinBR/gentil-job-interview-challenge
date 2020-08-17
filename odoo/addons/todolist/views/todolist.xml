@@ -12,8 +12,6 @@
                         quick_create="true"
                         records_draggable="true" 
                 >
-
-
                     <templates>
                         <t t-name="kanban-box">
                             <div
@@ -42,8 +40,6 @@
                             </div>
                         </t>
                     </templates>
-
-
                 </kanban>
             </field>
         </record>
