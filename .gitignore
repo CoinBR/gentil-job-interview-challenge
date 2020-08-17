@@ -5,4 +5,3 @@ __pycache__/
 *.py[cod]
 *$py.class
 *pyc
-odoo/addons/todolist/models/__pycache__/models.cpython-37.pyc
