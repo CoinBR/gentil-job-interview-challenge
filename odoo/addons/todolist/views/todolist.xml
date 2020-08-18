@@ -57,6 +57,19 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="view_todolist_tree">
+            <field name="name">todolist.view.tree</field>
+            <field name="model">todolist.todolist</field>
+            <field name="arch" type="xml">
+                <tree string="Idea list" editable="bottom">
+                    <field name="title"/>
+                    <field name="status"/>
+                    <field name="partner" string="Assigned to"/>
+                    <field name="due"/>
+                </tree>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="view_todolist_graph">
             <field name="name">todolist.view.graph</field>
             <field name="model">todolist.todolist</field>
