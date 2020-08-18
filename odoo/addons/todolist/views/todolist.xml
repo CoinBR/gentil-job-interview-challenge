@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+
+        <record model="ir.ui.view" id="view_todolist_tree">
+            <field name="name">todolist.view.tree</field>
+            <field name="model">todolist.todolist</field>
+            <field name="arch" type="xml">
+                <tree string="Idea list" editable="bottom">
+                    <field name="title"/>
+                    <field name="status"/>
+                    <field name="partner" string="Assigned to"/>
+                    <field name="due"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_todolist_calendar">
+            <field name="name">todolist.view.calendar</field>
+            <field name="model">todolist.todolist</field>
+            <field name="arch" type="xml">
+                <calendar string="Tasks" date_start="create_date" date_stop="due">
+                    <field name="partner" string="Assigned to"/>
+                    <field name="status"/>
+                </calendar> 
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_todolist_graph">
+            <field name="name">todolist.view.graph</field>
+            <field name="model">todolist.todolist</field>
+            <field name="arch" type="xml">
+                <graph string="Projects by Status" type="pie">
+                    <field name="status"/>
+                    <field name="status" type="row"/>
+                </graph>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="view_todolist_kanban">
             <field name="name">todolist.view.kanban</field>
             <field name="model">todolist.todolist</field>
@@ -45,101 +81,5 @@
                 </kanban>
             </field>
         </record>
-
-
-        <record model="ir.ui.view" id="view_todolist_calendar">
-            <field name="name">todolist.view.calendar</field>
-            <field name="model">todolist.todolist</field>
-            <field name="arch" type="xml">
-                <calendar string="Tasks" date_start="create_date" date_stop="due">
-                    <field name="due"/>
-                    <field name="title"/>
-                    <field name="status"/>
-                    <field name="partner" string="Assigned to"/>
-                </calendar> 
-            </field>
-        </record>
-
-        <record model="ir.ui.view" id="view_todolist_tree">
-            <field name="name">todolist.view.tree</field>
-            <field name="model">todolist.todolist</field>
-            <field name="arch" type="xml">
-                <tree string="Idea list" editable="bottom">
-                    <field name="title"/>
-                    <field name="status"/>
-                    <field name="partner" string="Assigned to"/>
-                    <field name="due"/>
-                </tree>
-            </field>
-        </record>
-
-        <record model="ir.ui.view" id="view_todolist_graph">
-            <field name="name">todolist.view.graph</field>
-            <field name="model">todolist.todolist</field>
-            <field name="arch" type="xml">
-                <graph string="Projects by Status" type="pie">
-                    <field name="status"/>
-                    <field name="status" type="row"/>
-                </graph>
-            </field>
-        </record>
-
-
-        <record id="parented_res_partner" model="ir.ui.view">
-            <field name="name">Partner Extended View</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="base.view_partner_form"/>
-            <field name="arch" type="xml">
-                <data>
-                   <field name="phone" position="before">
-                        <field name="mother_name"/>
-                    </field>
-                </data>                
-            </field>
-        </record>
-
-
-        <!-- window action -->
-        <!--
-            The following tag is an action definition for a "window action",
-            that is an action opening a view or a set of views
-        -->
-        <record model="ir.actions.act_window" id="todolist_list_action">
-            <field name="name">TodolisTodolist</field>
-            <field name="res_model">todolist.todolist</field>
-            <field name="view_mode">tree,form,search,kanban,calendar,graph</field>
-            <field name="help" type="html">
-                <p class="o_view_nocontent_smiling_face">Create the first task
-                </p>
-            </field>
-        </record>
-
-        <record model="ir.actions.act_window" id="todolist_list_partners_action">
-            <field name="name">Partners</field>
-            <field name="res_model">res.partner</field>
-            <field name="view_mode">tree,form,search</field>
-            <field name="help" type="html">
-                <p class="o_view_nocontent_smiling_face">Create the first partner 
-                </p>
-            </field>
-        </record>
-
-        <!-- top level menu: no parent -->
-        <menuitem id="main_todolist_menu" name="Todo List"/>
-        <!-- A first level in the left side menu is needed
-             before using action= attribute -->
-        <menuitem id="todolist_menu" name="Todo List"
-                  parent="main_todolist_menu"/>
-        <!-- the following menuitem should appear *after*
-             its parent openacademy_menu and *after* its
-             action course_list_action -->
-        <menuitem id="tasks_todolists_menu" name="Tasks" parent="todolist_menu"
-                  action="todolist_list_action"/>
-
-        <menuitem id="tasks_partners_menu" name="Partners" parent="todolist_menu"
-                  action="todolist_list_partners_action"/>
-        <!-- Full id location:
-             action="openacademy.course_list_action"
-             It is not required when it is the same module -->
 
 </odoo>

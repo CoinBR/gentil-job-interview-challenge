@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+        <record id="parented_res_partner" model="ir.ui.view">
+            <field name="name">Partner Extended View</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <data>
+                   <field name="phone" position="before">
+                        <field name="mother_name"/>
+                    </field>
+                </data>                
+            </field>
+        </record>
+</odoo>
