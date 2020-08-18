@@ -31,11 +31,13 @@
                                 </div>
                                 <div t-attf-class="oe_kanban_content">
                                     <!-- title -->
-                                    Session name:
-                                    <field name="title"/>
+                                    <strong><field name="title"/></strong>
+                                    <br/>
+                                    Assigned to:
+                                    <strong><field name="partner"/></strong>
                                     <br/>
                                     Due:
-                                    <field name="status"/>
+                                    <strong><field name="due"/></strong>
                                 </div>
                             </div>
                         </t>
