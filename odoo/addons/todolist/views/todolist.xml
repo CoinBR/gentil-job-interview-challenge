@@ -52,7 +52,10 @@
             <field name="model">todolist.todolist</field>
             <field name="arch" type="xml">
                 <calendar string="Tasks" date_start="create_date" date_stop="due">
-                    <field name="title"></field>
+                    <field name="due"/>
+                    <field name="title"/>
+                    <field name="status"/>
+                    <field name="partner" string="Assigned to"/>
                 </calendar> 
             </field>
         </record>
