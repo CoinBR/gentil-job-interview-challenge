@@ -11,6 +11,7 @@ class todolist(models.Model):
     title = fields.Char(size=50)
     description = fields.Text()
     status = fields.Selection([('created', 'Created'), ('working', 'Working'), ('done', 'Done'), ('problem', 'Problem')])
+    partner = fields.Many2one(comodel_name='res.partner')
     due = fields.Datetime()
 
 class ParentedPartner(models.Model):
