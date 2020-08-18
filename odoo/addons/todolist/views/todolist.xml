@@ -1,16 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-        <record model="ir.ui.view" id="view_todolist_tree">
-            <field name="name">todolist.view.tree</field>
+        <record model="ir.ui.view" id="view_todolist_tree_editable">
+            <field name="name">todolist.view.tree_editable</field>
             <field name="model">todolist.todolist</field>
             <field name="arch" type="xml">
-                <tree string="Idea list" editable="bottom">
+                <tree string="Tasks List (editable)" editable="bottom">
                     <field name="title"/>
                     <field name="status"/>
                     <field name="partner" string="Assigned to"/>
                     <field name="due"/>
                 </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_todolist_tree">
+            <field name="name">todolist.view.tree</field>
+            <field name="model">todolist.todolist</field>
+            <field name="arch" type="xml">
+                <tree string="Tasks List (forwards to Form)">
+                    <field name="title"/>
+                    <field name="status"/>
+                    <field name="partner" string="Assigned to"/>
+                    <field name="due"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_todolist_form">
+            <field name="name">todolist.view.form</field>
+            <field name="model">todolist.todolist</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group colspan="4">
+                        <group colspan="2" col="2">
+                            <separator string="Task" colspan="2"/>
+                            <field name="title"/>
+                            <field name="partner" string="Assigned to"/>
+                            <field name="status"/>
+                        </group>
+
+                        <group colspan="2" col="2">
+                            <separator string="Dates" colspan="2"/>
+                            <field name="create_date" readonly="True" />
+                            <field name="due"/>
+                        </group>
+                    </group>
+                </form>
             </field>
         </record>
 
