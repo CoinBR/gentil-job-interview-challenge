@@ -53,4 +53,15 @@ API RPC Call failed.
 ##########################################
 # Actual API Calls:
 
-print(rpc('res.partner', 'search', [[[ 'mother_name', '!=', False ]]]))
+parentedPartnersIds = rpc('res.partner',
+                            'search', 
+                            [[[ 'mother_name', '!=', False ]]]
+                            )
+
+partnersAndTheirMothers = rpc('res.partner',
+                                'read',
+                                [parentedPartnersIds],
+                                {'fields': ['name', 'mother_name']}
+                                )
+
+print(partnersAndTheirMothers)
