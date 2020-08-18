@@ -1,5 +1,6 @@
 from os import getenv
 import xmlrpc.client
+from flask import Flask, jsonify
 
 # connection info
 url = 'http://odoo:8069'
@@ -65,3 +66,9 @@ partnersAndTheirMothers = rpc('res.partner',
                                 )
 
 print(partnersAndTheirMothers)
+
+app = Flask(__name__)
+
+@app.route('/', methods=['GET'])
+def parented_partners():
+    return jsonify(partnersAndTheirMothers)

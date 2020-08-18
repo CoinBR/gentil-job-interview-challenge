@@ -13,12 +13,16 @@ services:
       - ./odoo/addons:/mnt/extra-addons
 
   api-poc:
-    image: python:3.8.5-alpine3.12
+    build: ./api-poc
     depends_on:
       - odoo
     volumes:
-      - ./api-poc/:/app
-    command: python /app/main.py
+      - ./api-poc/:/usr/src/app
+    environment:
+      FLASK_APP: main.py
+    ports:
+      - 5000:5000
+    command: flask run --host=0.0.0.0
 
   db:
     image: postgres:10.14-alpine
