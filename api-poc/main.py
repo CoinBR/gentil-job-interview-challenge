@@ -35,3 +35,22 @@ try:
     uid = common.authenticate(db, username, password, {})
 except Exception as e:
     raise RuntimeError(get_error_msg("Could not authenticate to odoo's api", e))
+
+def rpc(*args):
+    try:
+        models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))    
+        return models.execute_kw(db, uid, password, *args) 
+    except Exception as e:
+        raise RuntimeError("""
+----------------------------
+API RPC Call failed.
+*args: {}
+----------------------------
+{}
+----------------------------
+        """.format([*args], e))
+
+##########################################
+# Actual API Calls:
+
+print(rpc('res.partner', 'search', [[[ 'mother_name', '!=', False ]]]))
