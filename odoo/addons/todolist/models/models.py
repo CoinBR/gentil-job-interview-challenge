@@ -10,10 +10,15 @@ class todolist(models.Model):
 
     title = fields.Char(size=50, required=True)
     description = fields.Text()
-    status = fields.Selection([('01_created', 'Created'), ('02_working', 'Working'), ('03_done', 'Done'), ('99_problem', 'Problem')], required="True", default="01_created")
+    status = fields.Selection([('01_created', 'Created'), ('02_working', 'Working'), ('03_done', 'Done'), ('99_problem', 'Problem')],
+                                required="True", default="01_created",
+                                group_expand='_expand_status')
     partner = fields.Many2one(comodel_name='res.partner')
     due = fields.Datetime()
     color = fields.Integer(compute='_color')
+
+    def _expand_status(self, states, domain, order):
+        return [key for key, val in type(self).status.selection]
 
 
     def _color(self):
