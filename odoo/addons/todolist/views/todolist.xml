@@ -5,7 +5,7 @@
             <field name="name">todolist.view.tree_editable</field>
             <field name="model">todolist.todolist</field>
             <field name="arch" type="xml">
-                <tree string="Tasks List (editable)" editable="bottom">
+                <tree string="Tasks List (editable)" editable="top">
                     <field name="title"/>
                     <field name="status"/>
                     <field name="partner" string="Assigned to"/>
