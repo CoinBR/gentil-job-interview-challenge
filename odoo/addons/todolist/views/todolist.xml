@@ -32,20 +32,25 @@
             <field name="model">todolist.todolist</field>
             <field name="arch" type="xml">
                 <form>
-                    <group colspan="4">
-                        <group>
-                            <separator string="Task" colspan="2"/>
-                            <field name="title"/>
-                            <field name="partner" string="Assigned to"/>
-                            <field name="status"/>
+                        <group colspan="4">
+                            <group>
+                                <separator string="Task"/>
+                                <field name="title"/>
+                                <field name="partner" string="Assigned to"/>
+                                <field name="status"/>
+                            </group>
+
+                            <group>
+                                <separator string="Dates" />
+                                <field name="create_date" readonly="True" />
+                                <field name="due"/>
+                            </group>
                         </group>
 
                         <group>
-                            <separator string="Dates" colspan="2"/>
-                            <field name="create_date" readonly="True" />
-                            <field name="due"/>
+                            <separator colspan="4"/>
+                            <field name="description" colspan="4" />
                         </group>
-                    </group>
                 </form>
             </field>
         </record>
