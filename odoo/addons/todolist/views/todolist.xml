@@ -33,14 +33,14 @@
             <field name="arch" type="xml">
                 <form>
                     <group colspan="4">
-                        <group colspan="2" col="2">
+                        <group>
                             <separator string="Task" colspan="2"/>
                             <field name="title"/>
                             <field name="partner" string="Assigned to"/>
                             <field name="status"/>
                         </group>
 
-                        <group colspan="2" col="2">
+                        <group>
                             <separator string="Dates" colspan="2"/>
                             <field name="create_date" readonly="True" />
                             <field name="due"/>
