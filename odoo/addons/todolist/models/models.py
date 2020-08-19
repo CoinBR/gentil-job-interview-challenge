@@ -10,7 +10,7 @@ class todolist(models.Model):
 
     title = fields.Char(size=50)
     description = fields.Text()
-    status = fields.Selection([('created', 'Created'), ('working', 'Working'), ('done', 'Done'), ('problem', 'Problem')])
+    status = fields.Selection([('01_created', 'Created'), ('02_working', 'Working'), ('03_done', 'Done'), ('99_problem', 'Problem')])
     partner = fields.Many2one(comodel_name='res.partner')
     due = fields.Datetime()
     color = fields.Integer(compute='_color')
@@ -19,10 +19,10 @@ class todolist(models.Model):
     def _color(self):
 
         colorMap = { 
-            'created': 0,
-            'working': 3,
-            'done': 10,
-            'problem': 1,
+            '01_created': 0,
+            '02_working': 3,
+            '03_done': 10,
+            '99_problem': 1,
             }
 
         for record in self:
