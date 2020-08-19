@@ -30,16 +30,16 @@ then:
  - Also, It should be possible to assign a **task** to a **res.partner**
 
 ### API
-- I should prove that I was able to
---	Access  the odoo api,
--- Authenticate on the odoo api
--- Consume **res.partner**s information, using the API
+- I should prove that I was able to:
+	- Access  the odoo api,
+	- Authenticate on the odoo api
+	- Consume **res.partner**s information, using the API
 
 - So, I created my own simple REST Api:
--- It do all that was asked above (using python)
--- Gets a list off all partners that have the field "mother_name" filled 
--- Gets partner and mother names, for all partners found in the previous step 
--- Serve in my own simple REST API (using flask), the info gathered in the previous step, along with the partner id.
+	- It do all that was asked above (using python)
+	- Gets a list off all partners that have the field "mother_name" filled 
+	- Gets partner and mother names, for all partners found in the previous step 
+	- Serve in my own simple REST API (using flask), the info gathered in the previous step, along with the partner id.
 
 ## Technologies used:
 - [Python](https://www.python.org/)
