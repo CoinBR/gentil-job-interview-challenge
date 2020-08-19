@@ -1,10 +1,18 @@
 version: "3.7"
 services:
 
+  project-setup:
+    image: debian:buster
+    volumes:
+      - ./odoo:/odoo/
+    user: root
+    command: chmod 777 -R /odoo/
+
   odoo:
     image: odoo:13.0
     depends_on:
       - db
+      - project-setup
     ports:
       - "8069:8069"
     volumes:
