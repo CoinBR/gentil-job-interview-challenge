@@ -13,15 +13,16 @@ class todolist(models.Model):
     status = fields.Selection([('created', 'Created'), ('working', 'Working'), ('done', 'Done'), ('problem', 'Problem')])
     partner = fields.Many2one(comodel_name='res.partner')
     due = fields.Datetime()
-    color = fields.Char(compute='_color')
+    color = fields.Integer(compute='_color')
 
 
     def _color(self):
+
         colorMap = { 
-            'created': 'is-light',
-            'working': 'is-warning',
-            'done': 'is-success',
-            'problem': 'is-danger',
+            'created': 0,
+            'working': 3,
+            'done': 10,
+            'problem': 1,
             }
 
         for record in self:
