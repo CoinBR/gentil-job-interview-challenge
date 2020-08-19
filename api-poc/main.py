@@ -1,4 +1,5 @@
 from os import getenv
+from time import sleep
 import xmlrpc.client
 from flask import Flask, jsonify
 
@@ -26,10 +27,15 @@ password: {}
 common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))
 
 # test connection
-try:
-    common.version()
-except Exception as e:
-    raise RuntimeError(get_error_msg("A connection to the odoo api could not be estabilished", e))
+able_to_connect = False
+while not able_to_connect:
+    try:
+        common.version()
+        print("API-POC was able to connect to to odoo")
+        able_to_connect = True
+    except Exception as e:
+        print(get_error_msg("A connection to the odoo api could not be estabilished", e))
+        sleep(3 * 1000)
 
 # authenticate
 try:
