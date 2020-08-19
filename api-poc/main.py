@@ -54,21 +54,26 @@ API RPC Call failed.
 ##########################################
 # Actual API Calls:
 
-parentedPartnersIds = rpc('res.partner',
-                            'search', 
-                            [[[ 'mother_name', '!=', False ]]]
-                            )
 
-partnersAndTheirMothers = rpc('res.partner',
-                                'read',
-                                [parentedPartnersIds],
-                                {'fields': ['name', 'mother_name']}
-                                )
-
-print(partnersAndTheirMothers)
 
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def parented_partners():
-    return jsonify(partnersAndTheirMothers)
+    try:
+        parentedPartnersIds = rpc('res.partner',
+                                    'search', 
+                                    [[[ 'mother_name', '!=', False ]]]
+                                    )
+
+        partnersAndTheirMothers = rpc('res.partner',
+                                        'read',
+                                        [parentedPartnersIds],
+                                        {'fields': ['name', 'mother_name']}
+                                        )
+        return jsonify(partnersAndTheirMothers)
+
+    except Exception as e:
+        return jsonify({
+            "error": get_error_msg("Unable to get ParentedPartners and their mothers info.", e)
+        }), 500
