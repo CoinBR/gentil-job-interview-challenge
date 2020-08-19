@@ -35,7 +35,7 @@ while not able_to_connect:
         able_to_connect = True
     except Exception as e:
         print(get_error_msg("A connection to the odoo api could not be estabilished", e))
-        sleep(3 * 1000)
+        sleep(3)
 
 # authenticate
 try:
