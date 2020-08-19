@@ -13,6 +13,19 @@ class todolist(models.Model):
     status = fields.Selection([('created', 'Created'), ('working', 'Working'), ('done', 'Done'), ('problem', 'Problem')])
     partner = fields.Many2one(comodel_name='res.partner')
     due = fields.Datetime()
+    color = fields.Char(compute='_color')
+
+
+    def _color(self):
+        colorMap = { 
+            'created': 'is-light',
+            'working': 'is-warning',
+            'done': 'is-success',
+            'problem': 'is-danger',
+            }
+
+        for record in self:
+            record.color = colorMap[record.status]
 
 class ParentedPartner(models.Model):
     _inherit = 'res.partner'
